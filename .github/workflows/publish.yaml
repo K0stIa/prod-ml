@@ -103,11 +103,11 @@ jobs:
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build 
         run: |
-          docker build --tag ${{env.IMAGE}}:latest ./${{IMAGE_ML_APP}}
+          docker build --tag ${{env.IMAGE}}:latest ./${{env.IMAGE_ML_APP}}
       - name: Push 
         run: |
           docker push ${{env.IMAGE}}:latest
       - name: Run ok
         run: |
-          docker run --rm --name ${{IMAGE_ML_APP}}-test-run ${{env.IMAGE}}:latest
+          docker run --rm --name ${{env.IMAGE_ML_APP}}-test-run ${{env.IMAGE}}:latest
 
