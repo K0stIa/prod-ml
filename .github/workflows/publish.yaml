@@ -6,7 +6,7 @@ on:
       - main
   push:
     branches:
-      - course-04-2023-week-1
+      - web_apps
 
 env:
   IMAGE_ML_APP: app-ml
@@ -53,8 +53,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: week-1/app-ml/
-          file: week-1/app-ml/Dockerfile
+          context: prod-ml/app-ml/
+          file: prod-ml/app-ml/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_ML_APP }}:latest    
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_ML_APP }}:buildcache
@@ -78,8 +78,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: week-1/app-web/
-          file: week-1/app-web/Dockerfile
+          context: prod-ml/app-web/
+          file: prod-ml/app-web/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_ML_WEB }}:latest    
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_ML_WEB }}:buildcache
