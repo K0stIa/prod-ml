@@ -53,8 +53,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: prod-ml/app-ml/
-          file: prod-ml/app-ml/Dockerfile
+          context: app-ml/
+          file: app-ml/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_ML_APP }}:latest    
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_ML_APP }}:buildcache
@@ -78,8 +78,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: prod-ml/app-web/
-          file: prod-ml/app-web/Dockerfile
+          context: app-web/
+          file: app-web/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_ML_WEB }}:latest    
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_ML_WEB }}:buildcache
